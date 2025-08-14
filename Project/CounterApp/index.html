@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <container id="container">
+            <h1> Counter APP</h1>  
+        <button id ="increment" >+</button>
+        <h2>0</h2>
+        <button id ="decrement">-</button>
+        </container>
+    </body>
+    <script>
+        const increment = document.getElementById('increment');
+        const decrement = document.getElementById('decrement');
+        const counter = document.querySelector('h2');
+        count = 0;
+        increment.addEventListener('click',inc);
+        function inc(){
+            count++;
+            counter.innerHTML = count;
+        }
+        decrement.addEventListener('click', dec);
+        function dec(){
+            count--;
+            counter.innerHTML = count;
+        }
+    </script>
+</html>
