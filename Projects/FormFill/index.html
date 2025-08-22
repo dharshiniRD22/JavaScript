@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DropBox</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <h1 style="text-align: center;"> Address</h1>
+        <div id="country" style="margin-top: 25px;">
+            <h1 id="h1">Country</h1>
+            <input type="text" class="country" placeholder="ex: India" onkeyup="showstate(),error1()">
+        </div>
+        <div id="state">
+            <h1 id="h1">state</h1>
+            <input type="text" class="state" placeholder="ex: Tamil Nadu" onkeyup="showdistrict(),error1()">
+        </div>
+        <div id="district">
+            <h1 id="h1">District</h1>
+            <input type="text" class="district" placeholder="ex: chennai" onkeyup="showcity(),error1()">
+        </div>
+        <div id="city">
+            <h1 id="h1">city</h1>
+            <input type="text" class="city" placeholder="ex: tambaram" onkeyup="showzip(),error1()">
+        </div>
+        <div id="zip">
+            <h1 id="h1">zip</h1>
+            <input type="text" class="zip" placeholder="ex: 600048" onkeyup="error1()">
+        </div>
+        <h4 id="h4" style="color: red; font-size: 15px;"> please fill the detail !</h4>
+        <button class="btn btn-primary" id="save" type="submit">Save & Continue</button>
+    </div>
+</body>
+<script>
+    country = document.getElementById("country");
+    state = document.getElementById("state");
+    district = document.getElementById("district");
+    city = document.getElementById("city");
+    zip = document.getElementById("zip");
+
+    document.getElementById("state").style.display = "none";
+    document.getElementById("district").style.display = "none";
+    document.getElementById("city").style.display = "none";
+    document.getElementById("zip").style.display = "none";
+
+    function showstate() {
+        document.getElementById("state").style.display = "block";
+    }
+    function showdistrict() {
+        document.getElementById("district").style.display = "block";
+    }
+    function showcity() {
+        document.getElementById("city").style.display = "block";
+    }
+    function showzip() {
+        document.getElementById("zip").style.display = "block";
+    }
+
+    document.getElementById("h4").style.display = "none";
+    submit = document.getElementById("save");
+    country1 = document.getElementsByClassName("country")[0];
+    state1 = document.getElementsByClassName("state")[0];
+    district1 = document.getElementsByClassName("district")[0];
+    city1 = document.getElementsByClassName("city")[0];
+    zip1 = document.getElementsByClassName("zip")[0]
+    //submit actions
+    submit.addEventListener("click", error);
+    function error() {
+        if (country1.value.trim() === "" || state1.value.trim() === "" || district1.value.trim() === "" || city1.value.trim() === "" || zip1.value.trim() === "") {
+            document.getElementById("h4").style.display = "block";
+        }
+        else {
+            document.getElementById("h4").style.display = "none";
+            alert("your entered data have been saved!");
+        }
+    }
+    //hide error msg on entering data
+    function error1() {
+        document.getElementById("h4").style.display = "none";
+    }
+    //allow alphabets
+    function allowAlphabets(input) {
+        input.value = input.value.replace(/[^A-Za-z\s]/g, "");
+    }
+    //allow digits
+    function allowDigits(input) {
+        input.value = input.value.replace(/[^0-9]/g, "");
+    }
+    // input acceptence
+    country1.addEventListener("input",
+        function () {
+            allowAlphabets(country1)
+        });
+    state1.addEventListener("input",
+        function () {
+            allowAlphabets(state1)
+        });
+    district1.addEventListener("input",
+        function () {
+            allowAlphabets(district1)
+        });
+    city1.addEventListener("input",
+        function () {
+            allowAlphabets(city1)
+        });
+    zip1.addEventListener("input",
+        function () {
+            allowDigits(zip1)
+        });
+</script>
+<style>
+    .container-fluid {
+        width: 500px;
+        background-color: rgba(227, 241, 244, 0.474);
+        margin-top: 100px;
+        height: auto;
+    }
+
+    .btn.btn-primary {
+        margin-top: 20px;
+        margin-left: 300px;
+        margin-bottom: 15px;
+    }
+
+    .country,
+    .state,
+    .district,
+    .city,
+    .zip {
+        border-radius: 5px;
+        width: 400px;
+        height: 40px;
+        border-style: none;
+    }
+
+    #h1 {
+        font-size: 22px;
+    }
+</style>
+
+</html>
